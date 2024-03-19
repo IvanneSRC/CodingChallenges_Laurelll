@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coding Challenge 5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modified FLAMES</h1>
+    <input type="text" id="name1" placeholder="Enter Name 1">
+    <br>
+    <input type="text" id="name2" placeholder="Enter Name 2">
+    <br>
+    <button onclick="flames()">Match Names</button>
+    <h3 id="name"></h3>
+    <h4>FLAMES Result:</h4>
+    <h3 id="result"></h3>
+
+    <script>
+        function flames() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+            var cleanName1 = name1.replace(/[^a-zA-Z]/g, '').toUpperCase();
+            var cleanName2 = name2.replace(/[^a-zA-Z]/g, '').toUpperCase();
+            document.getElementById("name").innerText = "Names: " + name1 + " and " + name2;
+
+            var totalCharacters = cleanName1.length + cleanName2.length;
+            var flamesWord = "FLAMES";
+            var flamesCount = flamesWord.length;
+            var flamesIndex = (totalCharacters % flamesCount == 0) ? flamesCount : totalCharacters % flamesCount;
+            var resultMeaning = "";
+
+            switch (flamesWord.charAt(flamesIndex - 1)) {
+                case 'F':
+                    resultMeaning = "Friends";
+                    break;
+                case 'L':
+                    resultMeaning = "Lovers";
+                    break;
+                case 'A':
+                    resultMeaning = "Acquaintances";
+                    break;
+                case 'M':
+                    resultMeaning = "Marriage";
+                    break;
+                case 'E':
+                    resultMeaning = "Enemies";
+                    break;
+                case 'S':
+                    resultMeaning = "Sweethearts";
+                    break;
+            }
+
+            document.getElementById("result").innerText = "Result: " + resultMeaning;
+        }
+    </script>
+</body>
+</html>
