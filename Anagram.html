@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    
+    <title>Anagram Checker</title>
+</head>
+<body>
+
+<script>
+    function isAnagram(input1, input2) {
+        const str1 = input1.replace(/[^\w]/g, '').toLowerCase();
+        const str2 = input2.replace(/[^\w]/g, '').toLowerCase();
+
+        if (str1.length !== str2.length) {
+            return false;
+        }
+
+        const sortedStr1 = str1.split('').sort().join('');
+        const sortedStr2 = str2.split('').sort().join('');
+
+        return sortedStr1 === sortedStr2;
+    }
+
+    function handleAnagramCheck() {
+        const input1 = prompt("Enter the first word");
+        const input2 = prompt("Enter the second word");
+
+        const result = isAnagram(input1, input2);
+
+        if (result) {
+            alert("The words are anagrams.");
+        } else {
+            alert("The words are not anagrams.");
+        }
+    }
+
+    handleAnagramCheck();
+</script>
+
+</body>
+</html>
